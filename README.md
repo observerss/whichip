@@ -7,7 +7,7 @@
 ### On (IoT) Device
 
 ```bash
-curl https://github.com/observerss/whichip/blob/main/install/install.sh | sudo bash -
+wget -O install.sh https://raw.githubusercontent.com/observerss/whichip/main/install/install.sh && sudo bash install.sh
 ```
 
 Use this script, it will

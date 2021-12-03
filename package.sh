@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 go build -o ./bin/whichip -ldflags="-s -w" ./src
-VER=$(./bin/whichip version)
+VER="v$(./bin/whichip version)"
 env CGO_ENABLED=0 GOOS=windows GOARCH=386 go build -o ./release/whichip_"${VER}"_windows_x86.exe -trimpath -ldflags="-s -w" ./src
 env CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build -o ./release/whichip_"${VER}"_windows_x64.exe -trimpath -ldflags="-s -w" ./src
 env CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o ./release/whichip_"${VER}"_linux_arm64 -trimpath -ldflags="-s -w" ./src

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VER="0.1"
+VER="v0.1"
 
 OS=$(uname)
 case "$OS" in
@@ -24,15 +24,15 @@ esac
 
 FILENAME=whichip_"${VER}"_"${OS}"_"${ARCH}"
 
-info "download and install the binary..."
-cd /usr/local/bin && curl -O https://github.com/observerss/whichip/blob/main/install/"${FILENAME}"
-mv /usr/local/bin/"${FILENAME}" /usr/local/bin/whichip
+echo "download and install the binary..."
+wget -O /usr/local/bin/whichip https://github.com/observerss/whichip/releases/download/untagged-0e4733110be913dd2a88/"${FILENAME}"
+#mv /usr/local/bin/"${FILENAME}" /usr/local/bin/whichip
 chmod +x /usr/local/bin/whichip
 
-info "setup systemd"
-cd /lib/systemd/system && curl -O https://github.com/observerss/whichip/blob/main/install/whichip.service
+echo "setup systemd"
+wget -O /lib/systemd/system/whichip.service https://raw.githubusercontent.com/observerss/whichip/main/install/whichip.service
 chmod 644 /lib/systemd/system/whichip.service
 systemctl enable whichip.service
 systemctl start whichip.service
 
-info "done"
+echo "done"

@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-pip install whichip 
+pip install whichip
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ $ whichip
 ### In Code
 
 ```python
->>> import whichip
->>> whichip.discover()
+>> > import whichip
+>> > whichip.discover()
 ['10.86.2.222']
 ```
