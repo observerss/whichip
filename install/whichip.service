@@ -1,0 +1,15 @@
+[Unit]
+Description=whichip, listens to udp broadcasts and respond accordingly
+After=syslog.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/usr/local/bin/
+ExecStart=/usr/local/bin/whichip listen --debug
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
