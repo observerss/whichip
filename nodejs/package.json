@@ -15,7 +15,7 @@
     "commander": "^8.3.0",
     "pino": "^7.5.1"
   },
-  "engineStrict" : true,
+  "engineStrict": true,
   "engines": {
     "node": ">=16.0.0"
   }

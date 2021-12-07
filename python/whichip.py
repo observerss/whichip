@@ -69,13 +69,14 @@ def listen(log=print, timeout=3.0):
                 log("Sent confirmation back")
 
 
-def discover(log=print, timeout=1.0, all=True):
+def discover(log=print_nothing, timeout=0.2, all=True, cli=False):
+    bind_ip = get_bind_ip()
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.bind((get_bind_ip(), 0))
+    sock.bind((bind_ip, 0))
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
     sock.sendto(CLIENT_MSG, ("<broadcast>", PORT))
-    log("waiting to receive")
+    log("sent broadcast at", bind_ip)
     ips = []
     begin_time = time.time()
     while True:
@@ -85,14 +86,15 @@ def discover(log=print, timeout=1.0, all=True):
         except socket.timeout:
             break
         if data == SERVER_MSG:
-            log("Received response")
+            log("received response:", data)
             ip = str(server[0])
-            print(ip)
+            if cli:
+                print(ip)
             ips.append(ip)
             if not all:
                 break
-    if not ips:
-        print('no listener is found')
+    if not ips and cli:
+        print('not found')
     return ips
 
 
@@ -140,7 +142,7 @@ def main():
     if args.type == "listen":
         listen(log=log, timeout=timeout)
     elif args.type == "discover":
-        discover(log=log, timeout=timeout, all=all)
+        discover(log=log, timeout=timeout, all=all, cli=True)
 
 
 if __name__ == "__main__":
