@@ -19,8 +19,8 @@ $ whichip
 
 ### In Code
 
-```python
->> > import whichip
->> > whichip.discover()
+```doctest
+>>> import whichip
+>>> whichip.discover()
 ['10.86.2.222']
 ```
