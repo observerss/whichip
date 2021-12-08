@@ -24,12 +24,12 @@ or Download Binary Go Written Client
 
 | OS | Arch | URL |
 | --- | --- | --- |
-| Windows |　x86 | https://1 |
-| Windows |　amd64 | https://1 |
-| Linux |　arm64 | https://1 |
-| Linux |　amd64 | https://1 |
-| Mac |　arm64 | https://1 |
-| Mac |　amd64 | https://1 |
+| Windows |　x86 | https://github.com/observerss/whichip/releases/download/v0.1/whichip_v0.1_windows_x86.exe |
+| Windows |　amd64 | https://github.com/observerss/whichip/releases/download/v0.1/whichip_v0.1_windows_x64.exe |
+| Linux |　arm64 | https://github.com/observerss/whichip/releases/download/v0.1/whichip_v0.1_linux_arm64 |
+| Linux |　amd64 | https://github.com/observerss/whichip/releases/download/v0.1/whichip_v0.1_linux_amd64 |
+| Mac |　arm64 | https://github.com/observerss/whichip/releases/download/v0.1/whichip_v0.1_darwin_arm64 |
+| Mac |　amd64 | https://github.com/observerss/whichip/releases/download/v0.1/whichip_v0.1_darwin_amd64 |
 
 ## Usage
 

@@ -25,7 +25,7 @@ esac
 FILENAME=whichip_"${VER}"_"${OS}"_"${ARCH}"
 
 echo "download and install the binary..."
-wget -O /usr/local/bin/whichip https://github.com/observerss/whichip/releases/download/untagged-0e4733110be913dd2a88/"${FILENAME}"
+wget -O /usr/local/bin/whichip https://github.com/observerss/whichip/releases/download/${VER}/"${FILENAME}"
 #mv /usr/local/bin/"${FILENAME}" /usr/local/bin/whichip
 chmod +x /usr/local/bin/whichip
 
