@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-VER="v0.1"
+VER="v0.1.1"
 
 OS=$(uname)
 case "$OS" in
@@ -9,6 +9,10 @@ Linux)
   ;;
 Darwin)
   OS="darwin"
+  ;;
+*)
+  echo "unsupported os: $OS"
+  exit 1
   ;;
 esac
 
@@ -19,6 +23,10 @@ aarch64)
   ;;
 x86_64)
   ARCH="amd64"
+  ;;
+*)
+  echo "unsupported arch: $ARCH"
+  exit 1
   ;;
 esac
 
