@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='whichip',
-    version='0.1.0',
+    version='0.1.1',
     description='discover (IoT) device\'s IP(s) in local network',
     long_description=(
         open('README.md').read()
@@ -12,6 +12,7 @@ setup(
     long_description_content_type="text/markdown",
     author='observerss',
     url='https://github.com/observerss/whichip',
+    py_modules=['whichip'],
     packages=find_packages(where="."),
     entry_points={
         'console_scripts': ['whichip=whichip:main'],
