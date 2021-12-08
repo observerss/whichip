@@ -86,8 +86,15 @@ func Discover(c *cli.Context) error {
 				return
 			}
 
+			log.Debug("sent broadcast msg ", string(CLIENT_MSG), " from ", laddr.IP)
+
+			err = conn.SetDeadline(time.Now().Add(time.Duration(timeout * float64(time.Second))))
+			if err != nil {
+				log.Debug("set deadline failed, ignore results from ", laddr.IP)
+				return
+			}
+
 			buf := make([]byte, 1024)
-			conn.SetDeadline(time.Now().Add(time.Duration(timeout * float64(time.Second))))
 			for {
 				n, addr, err := conn.ReadFromUDP(buf)
 				if err != nil {
@@ -96,6 +103,7 @@ func Discover(c *cli.Context) error {
 					}
 					break
 				}
+				log.Debug("receive msg ", string(buf[:n]), " from ", addr.IP)
 				if bytes.Equal(buf[:n], SERVER_MSG) {
 					ch <- addr.IP.String()
 					if !waitAll {
@@ -110,6 +118,7 @@ func Discover(c *cli.Context) error {
 
 	result := make([]string, 0, len(ipNets))
 	timer := time.NewTimer(time.Duration(timeout * float64(time.Second)))
+	seen := make(map[string]bool)
 outer:
 	for i := 0; i < len(ipNets); i++ {
 		select {
@@ -117,7 +126,8 @@ outer:
 			break outer
 
 		case ip := <-ch:
-			if len(ip) > 0 {
+			if len(ip) > 0 && !seen[ip] {
+				seen[ip] = true
 				fmt.Printf("%s\n", ip)
 				result = append(result, ip)
 				if !waitAll {
